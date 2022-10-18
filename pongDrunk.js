@@ -8,10 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const pSize = 88;
     let paddleL = 0;
-    let paddleR = 250;
-    let paddleUp = 2;
-    let paddleDown = 3;
-    // ADD FEATURE add points for every paddle height
+    let paddleR = 0;
+    let paddleUp = 0;
+    let paddleDown = 0;
     var lowScore = 0;
     var hiScore = 0;
 
@@ -83,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         scoreCount();
                     }
                     bVX = -bVX;
-                    let deltaL = ballY - ((paddleL+pSize/2)+2);
+                    let deltaL = ballY - ((paddleL+pSize/2)-2);
                     bVY = deltaL *.11;
                     bVX *=1.05;
                     lowScore += 25;
@@ -117,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         scoreCount();
                     }
                     bVY = -bVY;
-                    let deltaU = ballX - ((paddleUp+pSize/2)+2);
+                    let deltaU = ballX - ((paddleUp+pSize/2)-2);
                     bVX = deltaU *.11;
                     bVY *= 1.05;
                     lowScore += 25;
@@ -134,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         scoreCount();
                     }
                 bVY = -bVY;
-                let deltaD = ballX - ((paddleDown+pSize/2)+2);
+                let deltaD = ballX - ((paddleDown+pSize/2)-2);
                 bVX = deltaD *.11;
                 bVY *= 1.05;
                 lowScore += 25;
