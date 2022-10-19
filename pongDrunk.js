@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let paddleUp = 0;
     let paddleDown = 0;
     var lowScore = 0;
-    var hiScore = 0;
+    var hiScore = localStorage.getItem("savedHiScore");
 
     function mouseMove(evt) {
         let rect = canvas.getBoundingClientRect();
@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.onload = function() {
+        localStorage.getItem('savedHiScore');
         canvas = document.getElementById('gameCanvas');
         canvasContext = canvas.getContext('2d');
         setInterval(function() {
@@ -71,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById("score").innerText = "Your high score: ";
         if (document.getElementById("hiScore").innerText < hiScore) {
             document.getElementById("hiScore").innerText = hiScore;
+            localStorage.setItem('savedHiScore', hiScore);
         }
     }
 
@@ -79,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ballX += bVX;
         ballY += bVY;
         // if ball hits LEFT SIDE
-        if (ballX < 22) {
+        if (ballX < 20) {
             if (ballY > paddleL &&
                 ballY < paddleL+88) {
                     if (lowScore == 0) {
@@ -96,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bVX = -bVX;;
         }
         // if ball hits RIGHT SIDE
-        if (ballX > canvas.width-30) {
+        if (ballX > canvas.width-28) {
             if (ballY > paddleR &&
                 ballY < paddleR+pSize) {
                     if (lowScore == 0) {
@@ -113,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 bVX = -bVX;;
         }
         // if ball hits TOP SIDE
-        if (ballY < 22) {
+        if (ballY < 20) {
             if (ballX > paddleUp &&
                 ballX < paddleUp+pSize) {
                     if (lowScore == 0) {
@@ -130,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bVX = -bVX;
             }
         // if ball hits BOTTOM SIDE
-        if (ballY > canvas.height - 30) {
+        if (ballY > canvas.height - 28) {
             if (ballX > paddleDown &&
                 ballX < paddleDown+88) {
                     if (lowScore == 0) {
