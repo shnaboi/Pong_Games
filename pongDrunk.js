@@ -68,6 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
             hiScore = lowScore;
         }
         scoreReset();
+        document.getElementById("score").innerText = "Your high score: ";
+        if (document.getElementById("hiScore").innerText < hiScore) {
+            document.getElementById("hiScore").innerText = hiScore;
+        }
     }
 
     function moveGame() {
@@ -92,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bVX = -bVX;;
         }
         // if ball hits RIGHT SIDE
-        if (ballX > canvas.width-22) {
+        if (ballX > canvas.width-30) {
             if (ballY > paddleR &&
                 ballY < paddleR+pSize) {
                     if (lowScore == 0) {
@@ -104,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     bVX *=1.05;
                     lowScore += 25;
                 }
-            } if (ballX > canvas.width) {
+            } if (ballX > canvas.width - 8) {
                 ballReset();
                 bVX = -bVX;;
         }
@@ -126,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bVX = -bVX;
             }
         // if ball hits BOTTOM SIDE
-        if (ballY > canvas.height - 22) {
+        if (ballY > canvas.height - 30) {
             if (ballX > paddleDown &&
                 ballX < paddleDown+88) {
                     if (lowScore == 0) {
@@ -138,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 bVY *= 1.05;
                 lowScore += 25;
                 } 
-            } if (ballY > canvas.height) {
+            } if (ballY > canvas.height - 8) {
             ballReset();
             bVX = -bVX;
         }
